@@ -7,7 +7,7 @@ require('dotenv').config();
 const app = express();
 
 const corsOptions = {
-    origin: ['http://localhost:3000','http://localhost:5173', 'http://127.0.0.1:3000'], // Frontend URLs
+    origin: ['http://localhost:3000','http://localhost:5173', 'http://127.0.0.1:3000','https://vneid-clone.web.app'], // Frontend URLs
     credentials: true, // Cho phép gửi cookies
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: [
