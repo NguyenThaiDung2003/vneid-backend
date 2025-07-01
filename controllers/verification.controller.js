@@ -154,7 +154,7 @@ exports.uploadAndVerifyIdCard = async (req, res) => {
                 backImagePath: backImage ? backImage.path : null
             }
         };
-        user.profile
+
         await user.save();
 
         // Xác định bước tiếp theo dựa trên điểm xác minh

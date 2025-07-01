@@ -50,4 +50,9 @@ module.exports = function(app) {
         [authJwt.verifyToken, authJwt.isAdmin], 
         verificationController.reviewVerification
     );
+        // Lấy toàn bộ hồ sơ cá nhân & sức khỏe
+    app.get("/api/user/full-profile", [authJwt.verifyToken], controller.getFullProfile);
+
+    // Cập nhật thông tin sức khỏe
+    app.put("/api/user/health", [authJwt.verifyToken], controller.updateHealth);
 };

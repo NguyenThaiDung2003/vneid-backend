@@ -13,9 +13,15 @@ module.exports = function(app) {
     // === Basic Auth Routes ===
     app.post("/api/auth/register", controller.register);
     app.post("/api/auth/login", controller.login);
+    app.post("/api/auth/logout",controller.logoutUser);
+    app.post("/api/auth/refresh",controller.refreshUserToken);
 
     // === MFA Routes ===
     app.post("/api/auth/mfa/setup", [authJwt.verifyToken], controller.setupMFA);
     app.post("/api/auth/mfa/verify", [authJwt.verifyToken], controller.verifyMFA);
     app.post("/api/auth/mfa/disable", [authJwt.verifyToken], controller.disableMFA);
+    app.post("/api/auth/mfa/senddisableotp",[authJwt.verifyToken],controller.sendMFAEnableOTP);
+    app.get("/api/auth/authorize", [authJwt.requireLogin], controller.authorize);
+    app.post("/api/auth/token",controller.exchangeCode);
+    app.get("api/auth/me",[authJwt.verifyToken],controller.getMe);
 };
